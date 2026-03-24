@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sizer/sizer.dart'; // تأكد من وجودها في pubspec
+import 'package:sizer/sizer.dart';
 import 'package:vortex_market/logic/login_bloc/auth_bloc/auth_bloc.dart';
-import 'presentation/screens/auth/login_screen.dart'; // المسار الجديد الصحيح
+import 'presentation/screens/auth/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,11 +13,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // نستخدم Sizer لجعل التصميم متجاوب مع كل الشاشات
     return Sizer(
       builder: (context, orientation, deviceType) {
         return BlocProvider(
-          // نوفر AuthBloc على مستوى التطبيق ليكون متاحاً لجميع الشاشات
           create: (context) => AuthBloc(),
           child: MaterialApp(
             title: 'Vortex Market',
@@ -25,9 +23,9 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               primarySwatch: Colors.purple,
               useMaterial3: true,
-              brightness: Brightness.dark, // ليتناسب مع النمط الزجاجي الداكن
+              brightness: Brightness.dark,
             ),
-            home: LoginScreen(), // استدعاء الشاشة بالاسم الصحيح
+            home: LoginScreen(),
           ),
         );
       },
