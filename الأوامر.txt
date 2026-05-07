@@ -1,0 +1,54 @@
+للبدء في تشغيل وتطوير مشروع Django، هناك مجموعة من الأوامر الأساسية التي ستستخدمها بشكل متكرر في واجهة السطر البرمجي (Terminal/Command Prompt).
+
+إليك قائمة بأهم هذه الأوامر مقسمة حسب الوظيفة:
+
+1. تشغيل خادم التطوير (Development Server)
+هذا هو الأمر الأكثر استخداماً، حيث يقوم بتشغيل خادم محلي لتجربة الموقع ومعاينة التغييرات فوراً.
+
+الأمر: python manage.py runserver
+
+ملاحظة: يمكنك تحديد منفذ (Port) معين إذا أردت، مثلاً: python manage.py runserver 8080.
+
+2. التعامل مع قاعدة البيانات (Migrations)
+تستخدم هذه الأوامر لنقل التعديلات التي تجريها على النماذج (Models) إلى جداول حقيقية في قاعدة البيانات.
+
+إنشاء ملفات التهجير: python manage.py makemigrations
+(يحلل التغييرات في الموديل وينشئ ملفات تعليمات).
+
+تنفيذ التهجير: python manage.py migrate
+(يطبق التغييرات فعلياً على قاعدة البيانات).
+
+عرض حالة التهجير: python manage.py showmigrations
+
+3. إدارة المستخدمين (Authentication)
+للدخول إلى لوحة تحكم Django (Django Admin)، ستحتاج إلى حساب مدير.
+
+الأمر: python manage.py createsuperuser
+(سيطلب منك إدخال اسم المستخدم، البريد الإلكتروني، وكلمة المرور).
+
+4. إنشاء المشروع والتطبيقات
+إنشاء مشروع جديد: django-admin startproject project_name
+
+إنشاء تطبيق (App) داخل المشروع: python manage.py startapp app_name
+
+5. أدوات المساعدة والتصحيح
+فتح بيئة تفاعلية (Shell): python manage.py shell
+(تسمح لك بكتابة أكواد Python والتفاعل مع قاعدة البيانات مباشرة).
+
+فحص الأخطاء: python manage.py check
+
+جمع الملفات الثابتة (للانتقال للإنتاج): python manage.py collectstatic
+
+ملخص سريع في جدول
+المهمة	الأمر
+تشغيل الموقع	python manage.py runserver
+تحديث قاعدة البيانات	python manage.py migrate
+تجهيز التحديثات	python manage.py makemigrations
+حساب المدير	python manage.py createsuperuser
+فتح الـ Shell	python manage.py shell
+نصيحة: تأكد دائماً من تفعيل البيئة الافتراضية (Virtual Environment) الخاصة بمشروعك قبل تنفيذ هذه الأوامر لضمان عمل المكتبات بشكل صحيح.
+
+هل واجهت مشكلة معينة في تشغيل أحد هذه الأوامر، أم أنك تبدأ مشروعاً جديداً؟
+
+
+venv\Scripts\activate

@@ -3,7 +3,7 @@ Django settings for backend project.
 """
 
 from pathlib import Path
-
+import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-3#$fb6lqcm_7!3#u!a%xw$f97-%b8q5uj+8#ldea^5xvs#hb=1'
@@ -93,3 +93,6 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

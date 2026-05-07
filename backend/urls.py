@@ -1,29 +1,54 @@
 from django.urls import path
 from admin_api import views 
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
-    # الدخول والمستخدمين
-    path('api/login/', views.login_view),
-    path('api/users-list/', views.get_all_users),
-    path('api/update-balance/', views.update_user_balance),
-    path('api/update-role/', views.update_user_role),
-
-    # إدارة المتاجر (SellerRequests)
-    path('api/pending-sellers/', views.pending_sellers),
-    path('api/update-seller/', views.update_seller_status),
+    # --- [1] نظام الهوية والمستخدمين (Identity & Users) ---
+    # يغطي: Login, Register
+    path('api/auth/<str:action>/', views.AuthController.as_view()),
     
-    # إدارة الـ QR والمالية (القديم)
-    path('api/qr-requests/', views.qr_requests_view),
-    path('api/admin/finances/', views.admin_finances_view),
+    # يغطي: Users list, Update Role, Update Balance
+    path('api/users/', views.UserManagementController.as_view()),
+    path('api/users/<int:user_id>/', views.UserManagementController.as_view()),
+    
+    # يغطي: Addresses & Notifications
+    path('api/users/<int:user_id>/addresses/', views.UserManagementController.as_view()),
+    path('api/users/<int:user_id>/notifications/', views.UserManagementController.as_view()),
+    path('api/users/upgrade-seller/', views.UserManagementController.as_view()),
 
-    # إدارة المنتجات (الجديد)
-    path('api/pending-products/', views.pending_products),
-    path('api/update-product-status/', views.update_product_status),
-    path('api/approved-products/', views.get_approved_products),
-    path('api/add-product/', views.add_product),
-    path('api/register/', views.register_user),
-    path('api/send-message/', views.send_message, name='send_message'),
-    path('api/messages/<int:user_id>/', views.get_messages, name='get_messages'),
-    # بدل السطر القديم بهذا:
-    path('api/request-seller/', views.request_seller, name='request_seller'),
+    # --- [2] نظام المنتجات (Marketplace & Products) ---
+    # يغطي: All products, Approved only (via query params), Add product
+    path('api/products/', views.ProductController.as_view()),
+    path('api/products/<int:pk>/', views.ProductController.as_view()),
+    
+    # يغطي: Pending products & Status updates (Approved/Rejected)
+    path('api/products/review/', views.ProductController.as_view()),
+
+    # --- [3] اللوجستيات والمحطات (Logistics & Stations) ---
+    # يغطي: Stations list, Full Details, Station Dashboard
+    path('api/logistics/stations/', views.LogisticController.as_view()),
+    path('api/logistics/stations/<int:station_id>/', views.LogisticController.as_view()),
+    path('api/logistics/trucks/', views.LogisticController.as_view()), # لجلب الشاحنات المتاحة
+    
+    # يغطي العمليات: (Receive, Load, Unload, Dispatch)
+    path('api/logistics/shipments/<str:action>/', views.LogisticController.as_view()),
+
+    # --- [4] النظام المالي (Finances & QR) ---
+    # يغطي: Admin Finance Overview, QR Requests list
+    path('api/finances/', views.FinanceController.as_view()),
+    
+    # يغطي العمليات المالية: (Initiate Purchase, Release Funds, Chat Purchase)
+    path('api/finances/transactions/<str:action>/', views.FinanceController.as_view()),
+
+    # --- [5] نظام التواصل (Chat & Messages) ---
+    # يغطي: Active Chats, Message History
+    path('api/chats/user/<int:user_id>/', views.ChatController.as_view()),
+    path('api/chats/history/<int:sender_id>/<int:receiver_id>/', views.ChatController.as_view()),
+    
+    # يغطي الأفعال: (Send message, Chat request, Respond to request, Negotiated Offer)
+    path('api/chats/actions/<str:action>/', views.ChatController.as_view()),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
