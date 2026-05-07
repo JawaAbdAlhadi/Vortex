@@ -1,0 +1,454 @@
+/* إعادة تعيين المسافات الأساسية */
+* {
+  margin: 0;
+  padding: 0;
+  box-box-sizing: border-box;
+  font-family: 'Inter', sans-serif; /* أو أي خط عربي مناسب */
+}
+
+/* 1. الحاوية الرئيسية والخلفية المعقدة */
+.vortex-app-container {
+  min-h-screen: 100vh;
+  background-color: #120129; /* لون أساسي غامق جداً */
+  background-image: 
+    /* التدرج اللوني الدائري الأرجواني في المنتصف */
+    radial-gradient(circle at center, rgba(168, 85, 247, 0.15) 0%, rgba(18, 1, 41, 0) 70%),
+    /* التدرج اللوني الخطي الأرجواني الخفيف للأسفل */
+    linear-gradient(to bottom, rgba(18, 1, 41, 1) 0%, rgba(168, 85, 247, 0.05) 100%),
+    /* صورة الدوامة فوق التدرجات */
+    url('../Vortex.jpg'); /* تأكد من مسار الصورة */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: white;
+  direction: rtl; /* اتجاه النص من اليمين لليسار */
+  display: flex;
+  flex-direction: column;
+}
+
+/* 2. الشريط العلوي */
+.vortex-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px 10px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(18, 1, 41, 0.5); /* شفافية خلف الشريط العلوي */
+  backdrop-filter: blur(5px);
+}
+
+.notification-wrapper {
+  position: relative;
+}
+
+.vortex-icon {
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.vortex-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background-color: #ef4444; /* أحمر الإشعارات */
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 2px 5px;
+  border-radius: 999px;
+  border: 1.5px solid #120129;
+}
+
+.vortex-page-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+}
+
+.placeholder-icon {
+  width: 24px;
+}
+
+/* 3. المحتوى الرئيسي */
+.vortex-main-content {
+  flex: 1;
+  padding: 10px 24px 100px 24px; /* مسافة إضافية في الأسفل للشريط السفلي */
+}
+
+/* شريط البحث */
+.vortex-search-wrapper {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.vortex-search-icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 20px;
+}
+
+.vortex-search-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.08); /* تأثير زجاجي خفيف */
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(168, 85, 247, 0.3); /* حدود أرجوانية شفافة */
+  border-radius: 999px;
+  padding: 14px 50px 14px 16px; /* مسافة لليمين للأيقونة */
+  color: white;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.vortex-search-input:focus {
+  outline: none;
+  border-color: rgba(168, 85, 247, 0.8);
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.4); /* تأثير الإضاءة عند التركيز */
+}
+
+.vortex-search-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* أزرار الأقسام */
+.vortex-categories-container {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  margin-bottom: 32px;
+  padding-bottom: 4px; /* لكي لا يظهر شريط التمرير */
+}
+
+.vortex-category-btn {
+  white-space: nowrap;
+  padding: 10px 24px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.05); /* تأثير زجاجي خفيف */
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.vortex-category-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.vortex-category-btn.active {
+  background: linear-gradient(135deg, #5b39a0 0%, #a855f7 100%); /* تدرج لوني للتفعيل */
+  color: white;
+  border: none;
+  box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4); /* تأثير الإضاءة للتفعيل */
+}
+
+/* شبكة المنتجات */
+.vortex-products-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.vortex-product-card {
+  background: rgba(255, 255, 255, 0.03); /* تأثير زجاجي خفيف جداً */
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.vortex-product-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.product-image-wrapper {
+  height: 160px;
+  background-color: white;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.product-image-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.product-info {
+  padding: 16px;
+}
+
+.product-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-price {
+  font-size: 16px;
+  font-weight: 700;
+  color: #a855f7; /* أرجواني فاتح للسعر */
+}
+
+.product-rating {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.star-icon {
+  color: #fbbf24; /* أصفر النجوم */
+  margin-left: 3px;
+}
+
+.vortex-loading {
+  grid-column: span 2;
+  text-align: center;
+  padding: 40px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* 4. الشريط السفلي */
+.vortex-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: rgba(18, 1, 41, 0.85); /* شفافية خلف الشريط السفلي */
+  backdrop-filter: blur(20px);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  z-index: 1000;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.nav-item.active {
+  color: white;
+}
+
+.nav-icon {
+  font-size: 24px;
+}
+
+.nav-item.active .nav-icon {
+  color: #a855f7; /* أرجواني فاتح للأيقونة النشطة */
+}
+
+/* إخفاء شريط التمرير */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+/* الحاوية الرئيسية */
+.product-detail-container {
+  background-color: #0f0c23 !important;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  direction: rtl; /* لضمان الترتيب العربي الصحيح */
+}
+
+/* قسم الصورة */
+.detail-image-section {
+  height: 38vh;
+  background-color: #fcc419;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.product-detail-img {
+  max-width: 70%;
+  max-height: 80%;
+  object-fit: contain;
+}
+
+/* لوحة المعلومات */
+.detail-info-section {
+  flex: 1;
+  background-color: #12122b;
+  border-radius: 40px 40px 0 0;
+  margin-top: -40px;
+  padding: 40px 24px 120px 24px; /* زيادة التباعد السفلي */
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+}
+
+.drag-handle {
+  width: 45px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* السعر والاسم */
+.price-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.price-tag-bubble {
+  background: rgba(43, 67, 126, 0.4);
+  color: #4a90e2;
+  padding: 6px 20px;
+  border-radius: 20px;
+  font-weight: 800;
+  font-size: 20px;
+}
+
+/* بطاقة البائع المحسنة */
+.seller-card-modern {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 25px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.seller-img-modern {
+  width: 50px;
+  height: 50px;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+.seller-text-info {
+  margin-right: 15px;
+  flex: 1;
+}
+
+/* شريط الأزرار السفلي */
+.mobile-actions-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 24px 30px 24px;
+  background: #12122b;
+  display: flex;
+  gap: 12px;
+  z-index: 100;
+}
+
+.action-icon-btn {
+  width: 58px;
+  height: 58px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.action-icon-btn.phone { color: #4ade80; }
+.action-icon-btn.cart { color: #fcc419; }
+
+.main-contact-btn {
+  flex: 1;
+  height: 58px;
+  background: #4a86f7;
+  color: white;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+}
+/* تنسيق سهم الرجوع في أعلى الصورة */
+.back-button-top {
+  position: absolute;
+  top: 20px;
+  right: 20px; /* جهة اليمين بما أن الواجهة عربية */
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.2); /* خلفية داكنة خفيفة */
+  backdrop-filter: blur(8px); /* تأثير زجاجي */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 50;
+  transition: all 0.2s ease;
+}
+
+.back-button-top:active {
+  transform: scale(0.9);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* تأكد أن حاوية الصورة تسمح بوضع العناصر فوقها */
+.detail-image-section {
+  position: relative; /* ضروري لعمل الـ absolute */
+  height: 38vh;
+  background-color: #fcc419;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}

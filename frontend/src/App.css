@@ -1,0 +1,388 @@
+/* App.css - Updated Theme: Deep Navy & Royal Purple */
+
+/* 1. Reset & Global Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+.stat-card {
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+body {
+  background-color: #0f0c29; /* كحلي غامق جداً */
+  color: #ffffff;
+}
+
+/* 2. Login Page Styling (توسيط وتدرج لوني) */
+.login-bg {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+}
+
+.login-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.login-card h2 {
+  margin-bottom: 30px;
+  color: #a29bfe; /* بنفسجي فاتح */
+  font-size: 28px;
+  font-weight: 600;
+}
+
+/* 3. Inputs & Buttons */
+.input-style {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid #4834d4;
+  background: rgba(0, 0, 0, 0.2);
+  color: white;
+  outline: none;
+  transition: 0.3s;
+}
+
+.input-style:focus {
+  border-color: #6c5ce7;
+  box-shadow: 0 0 8px rgba(108, 92, 231, 0.5);
+}
+
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(to right, #6c5ce7, #a29bfe);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.signup-btn {
+  background: transparent;
+  border: 1px solid #a29bfe;
+  color: #a29bfe;
+  padding: 8px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.signup-btn:hover {
+  background: #a29bfe;
+  color: #0f0c29;
+}
+
+.auth-footer {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.forgot-link {
+  color: #a29bfe;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* 4. Admin Dashboard Layout */
+.admin-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 260px;
+  background: #1a1a2e; /* كحلي صلب للجانب */
+  padding: 20px;
+  border-right: 1px solid #4834d4;
+}
+
+.sidebar h3 {
+  color: #a29bfe;
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 22px;
+  border-bottom: 1px solid rgba(162, 155, 254, 0.3);
+  padding-bottom: 15px;
+}
+
+.sidebar-item {
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  list-style: none;
+  color: #dcdde1;
+}
+
+.sidebar-item:hover {
+  background: rgba(108, 92, 231, 0.2);
+  color: #a29bfe;
+}
+
+.sidebar-item.active {
+  background: #6c5ce7;
+  color: white;
+  box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+}
+
+.main-content {
+  flex: 1;
+  padding: 40px;
+  background: #0f0c29;
+}
+
+/* 5. Tables */
+.main-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: #16213e;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.main-table th {
+  background: #4834d4;
+  color: white;
+  padding: 15px;
+  text-align: left;
+}
+
+.main-table td {
+  padding: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.main-table tr:hover {
+  background: rgba(162, 155, 254, 0.05);
+}
+
+/* 6. Utility Styles */
+hr {
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 20px 0;
+}
+input::-ms-reveal,
+input::-ms-clear {
+  display: none !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: white !important;
+  -webkit-box-shadow: 0 0 0px 1000px rgba(0,0,0,0) inset !important; /* يجعل الخلفية شفافة */
+  transition: background-color 5000s ease-in-out 0s;
+  background: transparent !important;
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+@media (max-width: 768px) {
+  /* 1. إلغاء الخلفية الملونة (Overlay) تماماً في الهاتف لتظهر صورة Vortex بوضوح */
+  div[style*="radial-gradient"], 
+  .vortex-bg > div:first-child {
+    background: transparent !important;
+  }
+
+  .vortex-bg {
+    /* تجبر الخلفية على ملء الشاشة بالكامل */
+    background-image: url('./Vortex.jpg') !important;
+    background-size: 100% 100% !important; /* هذا الخيار "يمط" الصورة لتملأ كل الزوايا */
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+    
+    /* استخدام dvh لضمان تغطية الشاشة حتى مع وجود شريط المتصفح في الجوال */
+    min-height: 100dvh !important; 
+    width: 100vw !important;
+    
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  .login-card {
+    width: 85% !important;
+    max-width: 320px;
+    /* جعل الكارد شفاف جداً لتبان خلفية Vortex الممتدة */
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+  }
+
+
+  /* 3. بقية التنسيقات للحفاظ على استقرار الواجهة */
+  .login-card h2 {
+    font-size: 22px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .input-style, .login-btn {
+    padding: 15px !important;
+    font-size: 16px !important;
+  }
+
+  .admin-container {
+    flex-direction: column !important;
+  }
+
+  .sidebar {
+    width: 100% !important;
+    height: auto !important;
+    padding: 10px !important;
+    border-right: none !important;
+    border-bottom: 1px solid rgba(162, 155, 254, 0.2) !important;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .main-content {
+    padding: 15px !important;
+    overflow-x: hidden !important;
+  }
+
+  .main-table {
+    display: block !important;
+    overflow-x: auto !important; 
+    white-space: nowrap !important;
+    width: 100% !important;
+  }
+}
+.filter-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background: #1a1a2e;
+    border-radius: 8px;
+}
+
+.filter-btn {
+    background: transparent;
+    border: 1px solid #4834d4;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.filter-btn.active-filter {
+    background: #4834d4;
+    box-shadow: 0 0 10px rgba(72, 52, 212, 0.5);
+}
+
+.action-group {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-approve { background: #2ecc71; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; }
+.btn-reject { background: #e74c3c; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; }
+.btn-delete { background: #95a5a6; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; }
+
+/* تنسيق خلية الصورة في الجدول */
+.product-table-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px; /* زوايا منحنية تعطي مظهراً عصرياً */
+    object-fit: cover; /* أهم خاصية: تضمن ملء المساحة دون تشويه أبعاد الصورة */
+    object-position: center;
+    border: 2px solid #2d2d44; /* إطار خفيف ليفصل الصورة عن خلفية الجدول */
+    background-color: #1a1a2e; /* خلفية تظهر في حال كانت الصورة شفافة */
+    transition: transform 0.3s ease;
+    display: block;
+    margin: 0 auto; /* توسيط الصورة داخل الخلية */
+}
+
+/* تأثير عند تمرير الماوس على الصورة */
+.product-table-img:hover {
+    transform: scale(1.1); /* تكبير بسيط عند التمرير */
+    border-color: #4834d4;
+}
+
+/* تنسيق الخلية نفسها لضمان التوسيط */
+td img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 1. تغيير خلفية الصفحة بالكامل */
+.admin-container {
+    background-color: #f0f2f5 !important;
+}
+
+/* 2. تغيير خلفية القائمة الجانبية (Sidebar) من اللون الداكن للأبيض */
+.sidebar {
+    background-color: #ffffff !important;
+    color: #334155 !important;
+    border-right: 1px solid #e2e8f0;
+}
+
+/* تغيير لون العناوين والنصوص داخل القائمة الجانبية */
+.sidebar h3 {
+    color: #1e293b !important;
+}
+
+.sidebar ul li {
+    color: #64748b !important;
+}
+
+/* 3. تغيير خلفية منطقة المحتوى (Main Content) */
+.main-content {
+    background-color: #f8fafc !important;
+}
+
+/* 4. جعل البطاقة التي تحتوي على الجداول بيضاء وبارزة */
+.main-content > div:last-child {
+    background-color: #ffffff !important;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    padding: 25px;
+    border: 1px solid #e2e8f0;
+}
+
+/* 5. تنسيق أزرار الفلترة العلوية */
+.main-content button {
+    border-radius: 10px !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
+}

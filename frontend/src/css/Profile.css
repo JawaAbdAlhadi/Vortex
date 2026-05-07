@@ -1,0 +1,36 @@
+.profile-header {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.avatar-container {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    border: 3px solid #6c5ce7;
+    padding: 5px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.profile-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 0 20px;
+}
+
+.menu-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 18px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.menu-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}

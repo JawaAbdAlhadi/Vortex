@@ -1,0 +1,259 @@
+/* --- إعدادات عامة --- */
+:root {
+    --primary: #3b82f6;
+    --primary-dark: #2563eb;
+    --success: #10b981;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --bg-main: #f8fafc;
+    --card-bg: #ffffff;
+    --text-main: #1e293b;
+    --border: #e2e8f0;
+}
+
+.station-layout {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    min-height: 100vh;
+    padding: 20px;
+    direction: rtl; /* يدعم اللغة العربية */
+}
+
+/* --- الهيدر --- */
+.station-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--card-bg);
+    padding: 20px 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    margin-bottom: 25px;
+}
+
+.header-actions button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    margin-right: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.header-actions button:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+/* --- شبكة العمليات الرئيسية --- */
+.main-dashboard-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr 350px; /* تقسيم: أسطول | مستودع | منطقة تحميل */
+    gap: 25px;
+    align-items: start;
+}
+
+/* --- القائمة الجانبية للأسطول --- */
+.fleet-sidebar {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 20px;
+    height: 75vh;
+    overflow-y: auto;
+    border: 1px solid var(--border);
+}
+
+.fleet-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: 0.2s;
+    background: #f1f5f9;
+}
+
+.fleet-item:hover {
+    background: #e2e8f0;
+}
+
+.fleet-item.active {
+    border-color: var(--primary);
+    background: #eff6ff;
+}
+
+.fleet-item .icon { font-size: 1.5rem; margin-left: 15px; }
+.fleet-item .info p { margin: 0; font-weight: bold; }
+.fleet-item.on-trip { opacity: 0.7; border-right: 5px solid var(--warning); }
+
+/* --- منطقة المستودع --- */
+.ops-center {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.action-card {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.scan-box {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.scan-box input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    outline: none;
+}
+
+.p-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
+}
+
+.p-card {
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.p-card button {
+    background: var(--success);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* --- منطقة التحميل النشطة --- */
+.loading-bay-advanced {
+    background: #1e293b; /* داكن لتمييز منطقة العمل */
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    min-height: 500px;
+    position: sticky;
+    top: 20px;
+}
+
+.active-vehicle-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.loaded-items {
+    margin: 20px 0;
+    flex: 1;
+}
+
+.loaded-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.unload-btn {
+    background: var(--danger);
+    color: white;
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dispatch-main-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.dispatch-main-btn:hover {
+    background: var(--success);
+    transform: scale(1.02);
+}
+
+/* --- نافذة التتبع (Modal) --- */
+.tracking-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.tracking-modal {
+    background: white;
+    width: 90%;
+    max-width: 900px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.tracking-modal header {
+    padding: 20px;
+    background: var(--text-main);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+}
+
+.map-frame {
+    height: 500px;
+    width: 100%;
+}
+
+/* --- التنبيهات --- */
+.toast-notification {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 30px;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    z-index: 2000;
+    animation: fadeInDown 0.5s;
+}
+
+.toast-notification.success { background: var(--success); }
+.toast-notification.error { background: var(--danger); }
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translate(-50%, -20px); }
+    to { opacity: 1; transform: translate(-50%, 0); }
+}
