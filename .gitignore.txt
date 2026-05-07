@@ -8,3 +8,22 @@ media/
 node_modules/
 build/
 .DS_Store
+
+# منع الصور بجميع أنواعها
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.svg
+*.webp
+
+# منع الفيديوهات
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.wmv
+
+# منع مجلدات الميديا الخاصة بـ Django (اختياري ولكن ينصح به)
+media/
+static/images/
