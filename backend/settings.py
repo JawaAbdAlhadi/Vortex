@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',  # مكتبة الـ CORS
     'admin_api',
+    'mobile_api', 
 ]
 
 MIDDLEWARE = [

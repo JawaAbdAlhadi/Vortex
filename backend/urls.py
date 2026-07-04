@@ -1,5 +1,6 @@
 from django.urls import path
 from admin_api import views 
+from mobile_api import views as mobile_views  # استيراد فيوز الموبايل
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -48,6 +49,17 @@ urlpatterns = [
     
     # يغطي الأفعال: (Send message, Chat request, Respond to request, Negotiated Offer)
     path('api/chats/actions/<str:action>/', views.ChatController.as_view()),
+    # --- [2] روابط تطبيق الموبايل (Mobile API) ---
+    # مخصصة لمبرمج الفلاتر (بدون لوجستيات)
+    path('mobile-api/auth/<str:action>/', mobile_views.AuthController.as_view()),
+    path('mobile-api/user/<int:user_id>/', mobile_views.UserManagementController.as_view()),
+    path('mobile-api/user/address/', mobile_views.UserManagementController.as_view()),
+    path('mobile-api/products/', mobile_views.ProductController.as_view()),
+    path('mobile-api/products/<int:pk>/', mobile_views.ProductController.as_view()),
+    path('mobile-api/finance/<str:action>/', mobile_views.FinanceController.as_view()),
+    path('mobile-api/chat/<int:user_id>/', mobile_views.ChatController.as_view()),
+    path('mobile-api/chat/action/<str:action>/', mobile_views.ChatController.as_view()),
+
 ]
 
 if settings.DEBUG:
